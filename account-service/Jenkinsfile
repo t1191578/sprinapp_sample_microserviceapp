@@ -3,14 +3,14 @@
 //[code language="java"]
 node {
 
-    withMaven(maven:'maven') {
+    withMaven(maven:'MyMaven') {
 
         stage('Checkout') {
             git url: 'https://github.com/t1191578/sprinapp_sample_microserviceapp.git', CredentialsID: 'gitt1191578', branch: 'master'
         }
 
         stage('Build') {
-            sh 'mvn clean install'
+            sh 'clean install'
 
             def pom = readMavenPom file:'pom.xml'
             print pom.version
