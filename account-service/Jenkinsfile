@@ -6,7 +6,7 @@ node {
     withMaven(maven:'maven') {
 
         stage('Checkout') {
-            git url: 'https://github.com/saurabh0010/sample-spring-microservices.git', CredentialsID: 'github', branch: 'master'
+            git url: 'https://github.com/t1191578/sprinapp_sample_microserviceapp.git', CredentialsID: 'gitt1191578', branch: 'master'
         }
 
         stage('Build') {
@@ -19,13 +19,13 @@ node {
 
         stage('Image') {
             dir ('account-service') {
-                def app = docker.build "localhost:5000/account-service:${env.version}"
+                def app = docker.build "gksp23/account-service:${env.version}"
                 app.push()
             }
         }
 
         stage ('Run') {
-            docker.image("localhost:5000/account-service:${env.version}").run('-p 2222:2222 -h account --name account --link discovery')
+            docker.image("gksp23/account-service:${env.version}").run('-p 2222:2222 -h account --name account --link discovery')
         }
 
         stage ('Final') {
