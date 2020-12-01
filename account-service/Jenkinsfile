@@ -3,7 +3,7 @@
 //[code language="java"]
 node {
 
-    withMaven(maven:'MyMaven') {
+    maven(maven:'MyMaven') {
 
         stage('Checkout') {
             git url: 'https://github.com/t1191578/sprinapp_sample_microserviceapp.git', CredentialsID: 'gitt1191578', branch: 'master'
